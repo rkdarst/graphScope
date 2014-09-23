@@ -246,15 +246,15 @@ def partitionGraph(g, iterations, numberOfSegments = 1):
         part = result[1]
         print "source:", nodesInPartS, "\n dest:", nodesInPartD, "\n partitioning", part, "\n"
         
-<<<<<<< Updated upstream
-        adj = g.get_adjacency()
-        writeMatrixToPnms(adj, 'output/initial_matrix_wo.pnm', 'output/partitioned_noise_wo_iter_' + str(i) + '.pnm', sourceNodes, destNodes, nodesInPartS, nodesInPartD);
-        writeInitialGraphToFile(adj, sourceNodes, destNodes, 'output/initial_matrix_noise_wo.txt')
-        writePartitionedGraphToFile(nodesInPartS, nodesInPartD, part, adj, sourceNodes, destNodes, 'output/partitioned_noise_wo_iter_' + str(i) + '.txt')
-
-=======
-      
->>>>>>> Stashed changes
+#<<<<<<< Updated upstream
+#        adj = g.get_adjacency()
+#        writeMatrixToPnms(adj, 'output/initial_matrix_wo.pnm', 'output/partitioned_noise_wo_iter_' + str(i) + '.pnm', sourceNodes, destNodes, nodesInPartS, nodesInPartD);
+#        writeInitialGraphToFile(adj, sourceNodes, destNodes, 'output/initial_matrix_noise_wo.txt')
+#        writePartitionedGraphToFile(nodesInPartS, nodesInPartD, part, adj, sourceNodes, destNodes, 'output/partitioned_noise_wo_iter_' + str(i) + '.txt')
+#
+#=======
+#      
+#>>>>>>> Stashed changes
     return [nodesInPartS, nodesInPartD, part]
 
 # def segmentGraphToPartitions(segment, newGraph):
