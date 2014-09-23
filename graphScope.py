@@ -4,6 +4,8 @@ from igraph import *
 import time
 from write_graph import *
 
+verbosity = 0
+
 class GraphSegment:
     def __init__(self, g, nodesInPartS, nodesInPartD, part):
         self.g = g
@@ -22,9 +24,10 @@ def graphScope(segment, newSegment):
     resultUnion = partitionGraph(unionGraph, 1, segment.segments + 1)
     unionSegment = GraphSegment(unionGraph, resultUnion[0], resultUnion[1], resultUnion[2])
     encodingCostUnion = totalCostForSegment(unionSegment, segment.segments + 1)
-    print "encodingCostUnion", encodingCostUnion
-    print "encodingCostSegment", encodingCostSegment
-    print "encodingCostNewGraph", encodingCostNewGraph
+    if verbosity > 0:
+        print "encodingCostUnion", encodingCostUnion
+        print "encodingCostSegment", encodingCostSegment
+        print "encodingCostNewGraph", encodingCostNewGraph
     if encodingCostUnion - encodingCostSegment < encodingCostNewGraph:
         unionSegment.segments = segment.segments + 1
         return [unionSegment]
@@ -230,7 +233,8 @@ def partitionGraph(g, iterations, numberOfSegments = 1):
 #     part = initialized[0]
 #     nodesInPartD = initialized[1]
     for i in xrange(iterations):
-        print "iteration", i, ":"
+        if verbosity > 0:
+            print "iteration", i, ":"
         # searchKL for source nodes
         result = searchKL(g, nodesInPartS, nodesInPartD, part, sourceNodes, numberOfSegments)
         nodesInPartS = result[0]
@@ -244,7 +248,8 @@ def partitionGraph(g, iterations, numberOfSegments = 1):
         result = searchKL(g, nodesInPartD, nodesInPartS, part, destNodes, numberOfSegments)
         nodesInPartD = result[0]
         part = result[1]
-        print "source:", nodesInPartS, "\n dest:", nodesInPartD, "\n partitioning", part, "\n"
+        if verbosity > 0:
+            print "source:", nodesInPartS, "\n dest:", nodesInPartD, "\n partitioning", part, "\n"
         
 #<<<<<<< Updated upstream
 #        adj = g.get_adjacency()
